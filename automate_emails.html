@@ -87,25 +87,25 @@
                 </ul>
                 <h2 class="text-2xl font-bold mb-4">Code Snippet</h2>
                 <pre class="bg-gray-200 p-4 rounded"><code>
-                        import smtplib
-                        from email.mime.text import MIMEText
-                        import csv
-                        
-                        def send_emails():
-                            with open('recipients.csv', 'r') as file:
-                                reader = csv.DictReader(file)
-                                for row in reader:
-                                    msg = MIMEText(f"Hello {row['name']}, this is an automated email!")
-                                    msg['Subject'] = 'Automated Email'
-                                    msg['From'] = 'your_email@gmail.com'
-                                    msg['To'] = row['email']
-                                    
-                                    with smtplib.SMTP('smtp.gmail.com', 587) as server:
-                                        server.starttls()
-                                        server.login('your_email@gmail.com', 'your_app_password')
-                                        server.sendmail(msg['From'], msg['To'], msg.as_string())
-                        
-                        send_emails()
+import smtplib
+from email.mime.text import MIMEText
+import csv
+
+def send_emails():
+    with open('recipients.csv', 'r') as file:
+        reader = csv.DictReader(file)
+        for row in reader:
+            msg = MIMEText(f"Hello {row['name']}, this is an automated email!")
+            msg['Subject'] = 'Automated Email'
+            msg['From'] = 'your_email@gmail.com'
+            msg['To'] = row['email']
+            
+            with smtplib.SMTP('smtp.gmail.com', 587) as server:
+                server.starttls()
+                server.login('your_email@gmail.com', 'your_app_password')
+                server.sendmail(msg['From'], msg['To'], msg.as_string())
+
+send_emails()
                 </code></pre>
                 <p class="text-lg text-gray-600 mb-6">
                         Note: Replace <code>your_email@gmail.com</code> and <code>your_app_password</code> with your actual credentials.
