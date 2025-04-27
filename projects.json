@@ -8,7 +8,7 @@
     {
         "title": "Web Scraping Automation",
         "description": "Python script to automate data extraction from websites using Selenium and BeautifulSoup.",
-        "image": "images/web_scraping.html.png",
+        "image": "images/web_scraping.jpg",
         "url": "web_scraping.html"
     }
 ]
