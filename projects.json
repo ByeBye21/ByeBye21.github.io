@@ -2,12 +2,12 @@
     {
         "title": "Email Automation Script",
         "description": "Python script to automate the process of sending personalized emails to multiple recipients.",
-        "image": "images/placeholder1.png",
+        "image": "images/automate_emails.png",
         "url": "automate_emails.html"
     },
     {
-        "title": "Placeholder Project 2",
-        "description": "Another Python automation project. Stay tuned for updates!",
+        "title": "Web Scraping Automation",
+        "description": "Python script to automate data extraction from websites using Selenium and BeautifulSoup.",
         "image": "images/web_scraping.html.png",
         "url": "web_scraping.html"
     }
