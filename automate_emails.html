@@ -42,7 +42,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Placeholder Project 1 - ByeBye21</title>
+    <title>Email Automation Script</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 font-sans text-gray-800">
@@ -51,7 +51,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
                 <div class="flex items-center">
-                    <span class="text-2xl font-bold text-indigo-600">ByeBye21</span>
+                    <span class="text-2xl font-bold text-indigo-600">CodeFlow</span>
                 </div>
                 <div class="flex items-center space-x-4">
                     <a href="index.html#home" class="text-gray-600 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium">Home</a>
@@ -66,15 +66,51 @@
     <!-- Project Details -->
     <section class="py-20 pt-24">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h1 class="text-3xl font-bold mb-6">Placeholder Project 1</h1>
-            <img src="images/placeholder1.png" alt="Placeholder Project 1" class="mb-6 w-full h-64 object-cover rounded-lg">
-            <p class="text-lg text-gray-600 mb-6">This is a placeholder for a Python automation scripting project. Detailed description, technologies used, and code snippets will be added soon.</p>
-            <h2 class="text-2xl font-bold mb-4">Technologies Used</h2>
-            <ul class="list-disc list-inside mb-6">
-                <li>Python</li>
-                <li>Automation libraries (e.g., pyautogui, selenium)</li>
-            </ul>
-            <a href="https://github.com/ByeBye21" class="text-indigo-600 hover:underline">View on GitHub</a>
+            <h1 class="text-3xl font-bold mb-6">Email Automation Script</h1>
+            <img src="images/automate_emails.png" alt="Email Automation Script" class="mb-6 w-full h-64 object-cover rounded-lg">
+            <p class="text-lg text-gray-600 mb-6">This Python script automates the process of sending personalized emails to multiple recipients. 
+                It uses the <code>smtplib</code> library to connect to an email server and send emails, with support 
+                for custom templates and recipient lists from a CSV file.</p>
+                <h2 class="text-2xl font-bold mb-4">Features</h2>
+                <ul class="list-disc list-inside mb-6">
+                        <li>Reads recipient data from a CSV file.</li>
+                        <li>Supports personalized email templates.</li>
+                        <li>Securely connects to SMTP servers (e.g., Gmail).</li>
+                        <li>Handles attachments for emails.</li>
+                </ul>
+                <h2 class="text-2xl font-bold mb-4">Technologies Used</h2>
+                <ul class="list-disc list-inside mb-6">
+                        <li>Python</li>
+                        <li><code>smtplib</code> for email sending</li>
+                        <li><code>email</code> library for email formatting</li>
+                        <li><code>csv</code> module for data handling</li>
+                </ul>
+                <h2 class="text-2xl font-bold mb-4">Code Snippet</h2>
+                <pre class="bg-gray-200 p-4 rounded"><code>
+                        import smtplib
+                        from email.mime.text import MIMEText
+                        import csv
+                        
+                        def send_emails():
+                            with open('recipients.csv', 'r') as file:
+                                reader = csv.DictReader(file)
+                                for row in reader:
+                                    msg = MIMEText(f"Hello {row['name']}, this is an automated email!")
+                                    msg['Subject'] = 'Automated Email'
+                                    msg['From'] = 'your_email@gmail.com'
+                                    msg['To'] = row['email']
+                                    
+                                    with smtplib.SMTP('smtp.gmail.com', 587) as server:
+                                        server.starttls()
+                                        server.login('your_email@gmail.com', 'your_app_password')
+                                        server.sendmail(msg['From'], msg['To'], msg.as_string())
+                        
+                        send_emails()
+                </code></pre>
+                <p class="text-lg text-gray-600 mb-6">
+                        Note: Replace <code>your_email@gmail.com</code> and <code>your_app_password</code> with your actual credentials.
+                </p>
+            <a href="https://github.com/ByeBye21/email-automation" class="text-indigo-600 hover:underline">View on GitHub</a>
         </div>
     </section>
 
@@ -84,8 +120,7 @@
             <p>© 2025 ByeBye21. All rights reserved.</p>
             <div class="mt-4 flex justify-center space-x-4">
                 <a href="https://github.com/ByeBye21" class="hover:text-indigo-400">GitHub</a>
-                <a href="#" class="hover:text-indigo-400">LinkedIn</a>
-                <a href="#" class="hover:text-indigo-400">X</a>
+                <a href="https://www.linkedin.com/in/younes-rahebi-0089ab293/" class="hover:text-indigo-400">LinkedIn</a>
             </div>
         </div>
     </footer>
