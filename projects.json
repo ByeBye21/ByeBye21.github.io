@@ -1,9 +1,9 @@
 [
     {
-        "title": "Placeholder Project 1",
-        "description": "A Python automation script to streamline tasks. Details coming soon!",
+        "title": "Email Automation Script",
+        "description": "Python script to automate the process of sending personalized emails to multiple recipients.",
         "image": "images/placeholder1.png",
-        "url": "placeholder1.html"
+        "url": "automate_emails.html"
     },
     {
         "title": "Placeholder Project 2",
