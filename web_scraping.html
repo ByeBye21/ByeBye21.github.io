@@ -87,27 +87,27 @@
                 </ul>
                 <h2 class="text-2xl font-bold mb-4">Code Snippet</h2>
                 <pre class="bg-gray-200 p-4 rounded"><code>
-                        from selenium import webdriver
-                        from bs4 import BeautifulSoup
-                        import pandas as pd
-                        
-                        def scrape_website(url):
-                            driver = webdriver.Chrome()
-                            driver.get(url)
-                            soup = BeautifulSoup(driver.page_source, 'html.parser')
-                            
-                            items = soup.select('.product-item')
-                            data = []
-                            for item in items:
-                                name = item.select_one('.name').text
-                                price = item.select_one('.price').text
-                                data.append({'name': name, 'price': price})
-                            
-                            df = pd.DataFrame(data)
-                            df.to_csv('products.csv', index=False)
-                            driver.quit()
-                        
-                        scrape_website('https://example.com')
+from selenium import webdriver
+from bs4 import BeautifulSoup
+import pandas as pd
+
+def scrape_website(url):
+    driver = webdriver.Chrome()
+    driver.get(url)
+    soup = BeautifulSoup(driver.page_source, 'html.parser')
+    
+    items = soup.select('.product-item')
+    data = []
+    for item in items:
+        name = item.select_one('.name').text
+        price = item.select_one('.price').text
+        data.append({'name': name, 'price': price})
+    
+    df = pd.DataFrame(data)
+    df.to_csv('products.csv', index=False)
+    driver.quit()
+
+scrape_website('https://example.com')
             </code></pre>
             <p class="text-lg text-gray-600 mb-6">
                 Note: Replace <code>https://example.com</code> with the target website and adjust selectors as needed.
