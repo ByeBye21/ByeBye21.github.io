@@ -1,6 +1,6 @@
 [
     {
-        "title": "Email Automation Script",
+        "title": "Email Automation",
         "description": "Python script to automate the process of sending personalized emails to multiple recipients.",
         "image": "images/automate_emails.png",
         "url": "automate_emails.html"
