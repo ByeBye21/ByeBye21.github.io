@@ -42,7 +42,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Email Automation Script</title>
+    <title>Email Automation Pro - Professional Email Campaign Tool</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 font-sans text-gray-800">
@@ -66,51 +66,174 @@
     <!-- Project Details -->
     <section class="py-20 pt-24">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h1 class="text-3xl font-bold mb-6">Email Automation Script</h1>
-            <img src="images/automate_emails.png" alt="Email Automation Script" class="mb-6 w-full h-64 object-cover rounded-lg">
-            <p class="text-lg text-gray-600 mb-6">This Python script automates the process of sending personalized emails to multiple recipients. 
-                It uses the <code>smtplib</code> library to connect to an email server and send emails, with support 
-                for custom templates and recipient lists from a CSV file.</p>
-                <h2 class="text-2xl font-bold mb-4">Features</h2>
-                <ul class="list-disc list-inside mb-6">
-                        <li>Reads recipient data from a CSV file.</li>
-                        <li>Supports personalized email templates.</li>
-                        <li>Securely connects to SMTP servers (e.g., Gmail).</li>
-                        <li>Handles attachments for emails.</li>
-                </ul>
-                <h2 class="text-2xl font-bold mb-4">Technologies Used</h2>
-                <ul class="list-disc list-inside mb-6">
-                        <li>Python</li>
-                        <li><code>smtplib</code> for email sending</li>
-                        <li><code>email</code> library for email formatting</li>
-                        <li><code>csv</code> module for data handling</li>
-                </ul>
-                <h2 class="text-2xl font-bold mb-4">Code Snippet</h2>
-                <pre class="bg-gray-200 p-4 rounded"><code>
-import smtplib
-from email.mime.text import MIMEText
-import csv
-
-def send_emails():
-    with open('recipients.csv', 'r') as file:
-        reader = csv.DictReader(file)
-        for row in reader:
-            msg = MIMEText(f"Hello {row['name']}, this is an automated email!")
-            msg['Subject'] = 'Automated Email'
-            msg['From'] = 'your_email@gmail.com'
-            msg['To'] = row['email']
+            <h1 class="text-3xl font-bold mb-6">📧 Email Automation Pro</h1>
+            <div class="bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg p-8 mb-6 text-white">
+                <h2 class="text-2xl font-bold mb-4">Professional Email Campaign Management Tool</h2>
+                <p class="text-lg opacity-90">A comprehensive PyQt5-based desktop application for automating email campaigns with modern GUI, CSV management, and advanced template personalization.</p>
+            </div>
             
-            with smtplib.SMTP('smtp.gmail.com', 587) as server:
-                server.starttls()
-                server.login('your_email@gmail.com', 'your_app_password')
-                server.sendmail(msg['From'], msg['To'], msg.as_string())
+            <img src="images/email_automation_gui.png" alt="Email Automation Pro Interface" class="mb-6 w-full h-64 object-cover rounded-lg shadow-lg">
+            
+            <div class="grid md:grid-cols-2 gap-8 mb-8">
+                <div>
+                    <h2 class="text-2xl font-bold mb-4 text-indigo-600">🚀 Key Features</h2>
+                    <ul class="list-disc list-inside space-y-2 text-gray-700">
+                        <li><strong>Modern GUI Interface</strong> - Professional card-based design with sidebar navigation</li>
+                        <li><strong>SMTP Authentication</strong> - Support for Gmail, Outlook, Yahoo, iCloud, and custom servers</li>
+                        <li><strong>Flexible CSV Management</strong> - Any column structure supported with smart email detection</li>
+                        <li><strong>Template Personalization</strong> - Dynamic {{attribute}} insertion with dropdown selectors</li>
+                        <li><strong>Bulk Email Campaigns</strong> - Progress tracking and real-time statistics</li>
+                        <li><strong>File Attachments</strong> - Multiple file support with size display</li>
+                        <li><strong>Activity Logging</strong> - Comprehensive logs with HTML export</li>
+                        <li><strong>Configuration Management</strong> - Save/load email settings and templates</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h2 class="text-2xl font-bold mb-4 text-green-600">💡 Application Modules</h2>
+                    <div class="space-y-3">
+                        <div class="bg-white p-4 rounded-lg shadow">
+                            <h3 class="font-bold text-gray-800">⚙️ Setup Page</h3>
+                            <p class="text-gray-600 text-sm">Email provider configuration and SMTP settings</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow">
+                            <h3 class="font-bold text-gray-800">👥 Recipients Page</h3>
+                            <p class="text-gray-600 text-sm">CSV preview and email column selection</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow">
+                            <h3 class="font-bold text-gray-800">✏️ Compose Page</h3>
+                            <p class="text-gray-600 text-sm">Rich email editor with attribute insertion</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow">
+                            <h3 class="font-bold text-gray-800">🚀 Send Page</h3>
+                            <p class="text-gray-600 text-sm">Campaign dashboard with progress monitoring</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow">
+                            <h3 class="font-bold text-gray-800">📋 Logs Page</h3>
+                            <p class="text-gray-600 text-sm">Activity monitoring and export functionality</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-send_emails()
-                </code></pre>
-                <p class="text-lg text-gray-600 mb-6">
-                        Note: Replace <code>your_email@gmail.com</code> and <code>your_app_password</code> with your actual credentials.
-                </p>
-            <a href="https://github.com/ByeBye21/email-automation" class="text-indigo-600 hover:underline">View on GitHub</a>
+            <h2 class="text-2xl font-bold mb-4 text-purple-600">🛠️ Technologies & Architecture</h2>
+            <div class="bg-white p-6 rounded-lg shadow-lg mb-6">
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div>
+                        <h3 class="font-bold text-gray-800 mb-2">Frontend</h3>
+                        <ul class="text-gray-600 space-y-1">
+                            <li>• PyQt5 GUI Framework</li>
+                            <li>• Modern CSS Styling</li>
+                            <li>• Card-based Layout</li>
+                            <li>• Loading Animations</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-gray-800 mb-2">Backend</h3>
+                        <ul class="text-gray-600 space-y-1">
+                            <li>• SMTP Email Sending</li>
+                            <li>• CSV Processing</li>
+                            <li>• Template Rendering</li>
+                            <li>• Configuration Management</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-gray-800 mb-2">Features</h3>
+                        <ul class="text-gray-600 space-y-1">
+                            <li>• Multi-threading</li>
+                            <li>• Progress Tracking</li>
+                            <li>• Error Handling</li>
+                            <li>• Auto-refresh</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="text-2xl font-bold mb-4 text-red-600">📝 CSV Template Example</h2>
+            <div class="bg-gray-800 text-green-400 p-4 rounded-lg mb-6 font-mono text-sm">
+                <div class="mb-2"># Flexible CSV format - any column structure supported</div>
+                <div class="text-yellow-300">email,name,company,position,city</div>
+                <div>john.doe@example.com,John Doe,Acme Corp,Software Engineer,New York</div>
+                <div>jane.smith@example.com,Jane Smith,Tech Solutions,Marketing Manager,Los Angeles</div>
+                <div class="mt-3 text-blue-300"># Use in templates: {{name}}, {{company}}, {{position}}</div>
+            </div>
+
+            <h2 class="text-2xl font-bold mb-4 text-indigo-600">💻 Application Architecture</h2>
+            <pre class="bg-gray-900 text-gray-100 p-6 rounded-lg overflow-x-auto mb-6"><code>
+EmailAutomation/
+├── email_gui.py              # Main GUI Application
+│   ├── EmailAutomationApp    # Main window class
+│   ├── SetupPage            # Account configuration
+│   ├── RecipientsPage       # CSV management
+│   ├── ComposePage          # Email composition
+│   ├── SendPage             # Campaign dashboard
+│   └── LogPage              # Activity monitoring
+├── email_app.py              # Backend Engine
+│   ├── EmailApplication     # Main app logic
+│   ├── EmailSender          # SMTP handling
+│   ├── CSVReader           # CSV processing
+│   └── ConfigurationManager # Settings management
+├── config.json              # Configuration storage
+├── recipients.csv           # Default CSV file
+└── requirements.txt         # Dependencies
+
+<span class="text-green-400"># Modern Features:</span>
+<span class="text-yellow-300">✓ Card-based responsive UI</span>
+<span class="text-yellow-300">✓ Real-time progress tracking</span>
+<span class="text-yellow-300">✓ Dynamic attribute insertion</span>
+<span class="text-yellow-300">✓ Comprehensive error handling</span>
+<span class="text-yellow-300">✓ Professional campaign management</span>
+            </code></pre>
+
+            <h2 class="text-2xl font-bold mb-4 text-green-600">🎯 Usage Workflow</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+                <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
+                    <h3 class="font-bold text-blue-800">1. Setup</h3>
+                    <p class="text-blue-600 text-sm">Configure email provider and authentication</p>
+                </div>
+                <div class="bg-green-50 p-4 rounded-lg border-l-4 border-green-500">
+                    <h3 class="font-bold text-green-800">2. Recipients</h3>
+                    <p class="text-green-600 text-sm">Load CSV and select email column</p>
+                </div>
+                <div class="bg-purple-50 p-4 rounded-lg border-l-4 border-purple-500">
+                    <h3 class="font-bold text-purple-800">3. Compose</h3>
+                    <p class="text-purple-600 text-sm">Write personalized email templates</p>
+                </div>
+                <div class="bg-red-50 p-4 rounded-lg border-l-4 border-red-500">
+                    <h3 class="font-bold text-red-800">4. Send</h3>
+                    <p class="text-red-600 text-sm">Launch campaign with monitoring</p>
+                </div>
+            </div>
+
+            <div class="bg-gradient-to-r from-indigo-500 to-purple-600 text-white p-6 rounded-lg mb-6">
+                <h3 class="text-xl font-bold mb-3">🔥 Why Choose Email Automation Pro?</h3>
+                <div class="grid md:grid-cols-2 gap-4">
+                    <ul class="space-y-2">
+                        <li>✅ Professional desktop application</li>
+                        <li>✅ No email format validation - maximum flexibility</li>
+                        <li>✅ Real-time campaign monitoring</li>
+                        <li>✅ Modern card-based interface</li>
+                    </ul>
+                    <ul class="space-y-2">
+                        <li>✅ Comprehensive activity logging</li>
+                        <li>✅ Multi-provider SMTP support</li>
+                        <li>✅ Template personalization system</li>
+                        <li>✅ Configuration persistence</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="flex space-x-4">
+                <a href="https://github.com/ByeBye21/email-automation" class="bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition-colors">
+                    📱 View on GitHub
+                </a>
+                <a href="https://github.com/ByeBye21/email-automation/releases" class="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors">
+                    📥 Download Release
+                </a>
+                <a href="mailto:younes0079@gmail.com" class="bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition-colors">
+                    📧 Contact Developer
+                </a>
+            </div>
         </div>
     </section>
 
@@ -121,6 +244,7 @@ send_emails()
             <div class="mt-4 flex justify-center space-x-4">
                 <a href="https://github.com/ByeBye21" class="hover:text-indigo-400">GitHub</a>
                 <a href="https://www.linkedin.com/in/younes-rahebi-0089ab293/" class="hover:text-indigo-400">LinkedIn</a>
+                <a href="mailto:younes0079@gmail.com" class="hover:text-indigo-400">Email</a>
             </div>
         </div>
     </footer>
