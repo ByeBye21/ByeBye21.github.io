@@ -1,0 +1,206 @@
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Extractor - Advanced Web Crawler & Contact Intelligence</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans text-gray-800">
+    <!-- Navigation Bar -->
+    <nav class="bg-white shadow-md fixed w-full z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <span class="text-2xl font-bold text-indigo-600">CodeFlow</span>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="index.html#home" class="text-gray-600 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium">Home</a>
+                    <a href="index.html#projects" class="text-gray-600 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium">Projects</a>
+                    <a href="index.html#about" class="text-gray-600 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium">About</a>
+                    <a href="index.html#contact" class="text-gray-600 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Project Details -->
+    <section class="py-20 pt-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 class="text-3xl font-bold mb-6">Email Extractor</h1>
+            <img src="images/email_extractor.png" alt="Email Extractor" class="mb-6 w-full h-64 object-cover rounded-lg">
+            <p class="text-lg text-gray-600 mb-6">A powerful Python tool for extracting emails, contact information, and social profiles from websites using advanced crawling techniques, JavaScript rendering, and AI-powered validation.</p>
+            
+            <h2 class="text-2xl font-bold mb-4">Features</h2>
+            <ul class="list-disc list-inside mb-6">
+                <li>Multi-method email detection (standard patterns, mailto links, obfuscated text, JavaScript-generated content)</li>
+                <li>Full JavaScript support for SPAs and React websites using Playwright</li>
+                <li>Contact intelligence for names, titles, companies, phone numbers, and social profiles</li>
+                <li>Real-time email verification and data quality scoring</li>
+                <li>OCR extraction for emails in images and documents</li>
+                <li>Multi-language support for international websites (Turkish, Spanish, etc.)</li>
+                <li>Multiple output formats (CSV, JSON, Excel) with detailed analytics</li>
+                <li>Batch processing for handling multiple domains simultaneously</li>
+            </ul>
+            
+            <h2 class="text-2xl font-bold mb-4">Application Modules</h2>
+            <ul class="list-disc list-inside mb-6">
+                <li><strong>Main CLI:</strong> Command-line interface for initiating crawls</li>
+                <li><strong>Website Crawler:</strong> Async web crawling engine with Playwright support</li>
+                <li><strong>Email Extractor:</strong> Multi-method email extraction engine</li>
+                <li><strong>Contact Matcher:</strong> AI-powered contact information association</li>
+                <li><strong>Utilities:</strong> Configuration, logging, patterns, text processing, validation, and export modules</li>
+            </ul>
+                
+            <!-- Presentation video -->
+            <video controls class="mb-6 w-full rounded-lg" poster="images/email_extractor_2.jpg">
+                <source src="images/email_extractor.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+                
+            <h2 class="text-2xl font-bold mb-4">Technologies Used</h2>
+            <ul class="list-disc list-inside mb-6">
+                <li>Python with Playwright for web crawling</li>
+                <li><code>re</code> module for regex-based pattern matching</li>
+                <li><code>pytesseract</code> for OCR extraction</li>
+                <li><code>pandas</code> for data handling and Excel output</li>
+                <li><code>pydantic</code> for configuration management</li>
+                <li>Asyncio for efficient batch processing</li>
+                <li>JSON and CSV modules for flexible output formats</li>
+            </ul>
+            
+            <h2 class="text-2xl font-bold mb-4">Output Example (CSV)</h2>
+            <pre class="bg-gray-200 p-4 rounded"><code>
+email,name,title,company,phone,source_url,extraction_method,confidence
+john.doe@company.com,John Doe,Senior Developer,TechCorp,+1-555-0123,https://company.com/team,mailto_link,0.95
+jane.smith@tech.com,Jane Smith,Marketing Manager,Tech Solutions,+1-555-9876,https://tech.com/about,standard_pattern,0.90
+            </code></pre>
+            
+            <h2 class="text-2xl font-bold mb-4">Application Architecture</h2>
+            <pre class="bg-gray-200 p-4 rounded"><code>
+email_extractor/
+├── main.py                      # Main CLI entry point and argument parsing
+├── install.py                   # Automated dependency installation script
+├── requirements.txt             # Python dependencies
+├── crawler/
+│   └── website_crawler.py      # Async web crawling engine with Playwright
+├── extractors/
+│   ├── email_extractor.py      # Multi-method email extraction engine
+│   └── contact_matcher.py      # AI-powered contact information association
+├── utils/
+│   ├── config.py               # Configuration management with Pydantic
+│   ├── logger.py               # Advanced logging setup and management
+│   ├── patterns.py             # 50+ regex patterns for email/contact detection
+│   ├── text_processing.py      # NLP text cleaning and normalization
+│   ├── validators.py           # Email validation and data quality scoring
+│   ├── exporters.py            # Multi-format export (CSV, JSON, Excel)
+│   └── progress_tracker.py     # Real-time crawling progress monitoring
+├── logs/                       # Automatic log storage
+└── results/                    # Default output directory
+            </code></pre>
+            
+            <h2 class="text-2xl font-bold mb-4">Installation & Usage</h2>
+            <pre class="bg-gray-200 p-4 rounded"><code>
+# Install dependencies
+python install.py
+
+# OCR Setup (Optional)
+# Windows
+choco install tesseract
+# or
+conda install -c conda-forge tesseract
+
+# Ubuntu/Debian
+sudo apt install tesseract-ocr
+
+# macOS
+brew install tesseract
+
+# Verify Tesseract
+tesseract --version
+
+# Basic Usage
+python main.py --url https://example.com
+
+# Batch processing
+python main.py --urls-file websites.txt --output excel
+
+# JavaScript-heavy sites
+python main.py --url https://example.com --use-javascript
+
+# High-quality extraction
+python main.py --url https://example.com --validate-emails --extract-social --output excel
+            </code></pre>
+            
+            <p class="text-lg text-gray-600 mb-6">
+                This tool is perfect for lead generation, academic research, business intelligence, and contact discovery from public web sources, with built-in ethical crawling features.
+            </p>
+            
+            <div class="bg-gradient-to-r from-gray-800 to-gray-900 text-white p-8 rounded-xl mb-8">
+                <div class="flex flex-col md:flex-row items-center justify-between">
+                    <div class="mb-4 md:mb-0">
+                        <h3 class="text-2xl font-bold mb-2">🚀 Ready to extract contact data?</h3>
+                        <p class="text-gray-300">Get the complete source code and start crawling websites for valuable contact information today.</p>
+                    </div>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="https://github.com/ByeBye21/email_extractor" class="bg-green-600 hover:bg-green-700 text-white font-bold py-8 px-16 rounded-lg text-lg transition-colors duration-300 text-center transform hover:scale-105">
+                            View on GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p>© 2025 ByeBye21. All rights reserved.</p>
+            <div class="mt-4 flex justify-center space-x-4">
+                <a href="https://github.com/ByeBye21" class="hover:text-indigo-400">GitHub</a>
+                <a href="https://www.linkedin.com/in/younes-rahebi-0089ab293/" class="hover:text-indigo-400">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
