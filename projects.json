@@ -6,9 +6,9 @@
         "url": "automate_emails.html"
     },
     {
-        "title": "Web Scraping Automation",
-        "description": "Python script to automate data extraction from websites using Selenium and BeautifulSoup.",
-        "image": "images/web_scraping.jpg",
-        "url": "web_scraping.html"
+        "title": "Email Extractor",
+        "description": "Python tool for extracting emails and contact info from websites using advanced crawling and AI validation.",
+        "image": "images/email_extractor.png",
+        "url": "email_extractor.html"
     }
 ]
